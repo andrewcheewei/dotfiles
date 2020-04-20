@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/home/andrew/github/dotfiles/.git'
+let g:netrw_dirhist_5='/home/andrew/.config/i3blocks'
+let g:netrw_dirhist_4='/home/andrew/.config/i3blocks/backlight'
+let g:netrw_dirhist_3='/home/andrew/.config/i3blocks'
+let g:netrw_dirhist_2='/home/andrew/.config/i3blocks/battery-poly'
+let g:netrw_dirhist_1='/home/andrew/.config/i3blocks'

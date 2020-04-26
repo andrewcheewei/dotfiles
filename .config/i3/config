@@ -23,7 +23,7 @@ gaps outer 8
 bindsym $mod+shift+braceright gaps outer current plus 4
 bindsym $mod+bracketright gaps outer current minus 4
 
-for_window [class=".*"] border pixel 1
+for_window [class=".*"] border pixel 3
 hide_edge_borders both
 new_window pixel
 
@@ -139,12 +139,32 @@ bindsym $mod+Shift+Escape exec "i3-nagbar -t warning -m 'You pressed the exit sh
 bar {
         font pango: inconsolata-medium 12
 	position top
-#	status_command i3status
         status_command i3blocks -c ~/.config/i3blocks/config
 	mode dock
 	modifier None
         strip_workspace_numbers yes
+        colors {
+                background #000000
+                statusline #ffffff
+                separator #666666
+
+                #color class       #border #bkgrnd #text
+                focused_workspace  #210939 #9410e5 #ffffff
+                active_workspace   #473654 #210939 #ffffff
+                inactive_workspace #473654 #210939 #888888
+                urgent_workspace   #2f343a #900000 #ffffff
+        }
 }
+
+# colors
+# class                 border  backgr. text    indicator child_border
+client.focused          #210939 #285577 #ffffff #2e9ef4   #805e99
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
 
 # Calculator
 for_window [instance="math"] floating enable

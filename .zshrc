@@ -68,6 +68,7 @@ alias gc='git clone'
 alias gccg='gcc -g -Wall'
 alias g++g='g++ -g -Wall'
 alias val='valgrind --leak-check=yes'
+alias clac='ssh awc2146@clac.cs.columbia.edu'
 
 # Lines configured by zsh-newuser-install
 setopt autocd nomatch

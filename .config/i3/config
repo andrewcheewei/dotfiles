@@ -1,20 +1,3 @@
-# Try to kill the wallpaper set by Plasma (it takes up the entire workspace
-# and hides everythiing)
-exec --no-startup-id wmctrl -c Plasma
-
-for_window [title="Desktop — Plasma"] kill; floating enable; border none
-for_window [title="Desktop — Plasma"] kill; floating enable; border none
-for_window [class="plasmashell"] floating enable;
-for_window [class="Plasma"] floating enable; border none
-for_window [title="plasma-desktop"] floating enable; border none
-for_window [title="win7"] floating enable; border none
-for_window [class="krunner"] floating enable; border none
-for_window [class="Kmix"] floating enable; border none
-for_window [class="Klipper"] floating enable; border none
-for_window [class="Plasmoidviewer"] floating enable; border none
-for_window [class="(?i)*nextcloud*"] floating disable
-for_window [class="plasmashell" window_type="notification"] floating enable, border none, move right 700px, move down 450px, no_focus
-
 gaps inner 8
 bindsym $mod+shift+braceleft gaps inner current plus 4
 bindsym $mod+bracketleft gaps inner current minus 4
@@ -28,7 +11,7 @@ hide_edge_borders both
 new_window pixel
 
 set $mod Mod4
-set $term konsole 
+set $term st
 set $browser firefox
 
 # start a terminal
@@ -121,10 +104,6 @@ bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 bindsym $mod+Shift+m move container to workspace $workspacem
 
-# force programs to open in certain desktops
-#for_window [class="Spotify"] move to workspace $workspacem
-exec --no-startup-id i3-msg 'workspace $workspacem; exec $term -e spt'
-
 # reload the configuration file
 bindsym $mod+BackSpace reload
 
@@ -137,7 +116,7 @@ bindsym $mod+Shift+Escape exec "i3-nagbar -t warning -m 'You pressed the exit sh
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        font pango: inconsolata-medium 12
+        font pango: inconsolata-medium 9
 	position top
         status_command i3blocks -c ~/.config/i3blocks/config
 	mode dock
@@ -148,8 +127,8 @@ bar {
                 statusline #ffffff
                 separator #666666
 
-                #color class       #border #bkgrnd #text
-                focused_workspace  #210939 #9410e5 #ffffff
+                #color class       border  backgr  text
+                focused_workspace  #210939 #9410e5 #ffffff 
                 active_workspace   #473654 #210939 #ffffff
                 inactive_workspace #473654 #210939 #888888
                 urgent_workspace   #2f343a #900000 #ffffff
@@ -157,22 +136,21 @@ bar {
 }
 
 # colors
-# class                 border  backgr. text    indicator child_border
-client.focused          #210939 #285577 #ffffff #2e9ef4   #805e99
+# class                 border  backgr  text    indicator child_border
+client.focused          #210939 #285577 #ffffff #2e9ef4   #805e99 
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+client.urgent           #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #ffffff
 
 # Calculator
 for_window [instance="math"] floating enable
 for_window [instance="math"] resize set 800 300
-for_window [instance="math"] move scratchpad
+for_window [instance="math"] move scratchpad 
 for_window [instance="math"] border pixel 6
-exec_always --no-startup-id $term -n math -f mono: pixelsize=24 -e python -q
-bindsym $mod+b [instance="math"] scratchpad show; [instance="math"] move position center
+exec_always --no-startup-id $term -n math -f mono:pixelsize=24 -e python -q
+bindsym $mod+b [instance="math"] scratchpad show; [instance="math"] move position center 
 
 # Change background to Wallpaper.jpg
 exec_always feh --bg-scale ~/.config/i3/wallpaper.jpg
@@ -189,11 +167,15 @@ exec --no-startup-id i3-msg 'workspace $workspacem; exec $term -e spt'
 # volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-
+#bindsym XF86AudioMute exec --nostartup-id amixer -D pulse set Master 1+ toggle
 bindsym XF86AudioMute exec ~/.config/i3/mute.sh
 
 # brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5 -time 0
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 -time 0
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10 -time 0
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 -time 0
+
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 5 && pkill -RTMIN+13 i3blocks 
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 5 && pkill -RTMIN+13 i3blocks 
 
 # screenshot
 bindsym Print exec --no-startup-id maim pic-full-"$(date '+%y%m%d-%H%M-%S').png"

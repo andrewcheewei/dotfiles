@@ -7,12 +7,6 @@ label=🧠
 separator=false
 interval=30
 
-[memory]
-label=🦾 
-instance=swap
-separator=false
-interval=30
-
 [cpu_usage]
 label=📈 
 interval=10
@@ -36,7 +30,7 @@ interval=10
 
 [battery]
 label=🔋 
-BAT_NUMBER=0
+BAT_NUMBER=1
 instance=0
 interval=30
 

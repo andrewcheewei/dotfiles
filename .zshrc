@@ -44,8 +44,7 @@ alias cl='clear'
 alias mkd='mkdir -pv'
 alias rmd='rmdir -pv'
 alias grep='grep --color=auto'
-alias egrep='egrep --color==auto'
-alias fgrep='fgrep --color==auto'
+alias pgrep='pgrep -l'
 alias p='sudo pacman'
 alias ...='../..' # 2 levels higher
 alias ....='../../..' # 3 levels higher
@@ -68,7 +67,6 @@ alias gc='git clone'
 alias gccg='gcc -g -Wall'
 alias g++g='g++ -g -Wall'
 alias val='valgrind --leak-check=yes'
-alias clac='ssh awc2146@clac.cs.columbia.edu'
 
 # Lines configured by zsh-newuser-install
 setopt autocd nomatch

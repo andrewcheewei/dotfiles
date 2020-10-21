@@ -1,3 +1,3 @@
-exec i3
+[[ -f ~/.config/.Xmodmap ]] && xmodmap ~/.config/.Xmodmap
 
-[[ -f ~/.config/.Xmodmap ]] & xmodmap ~/.config/.Xmodmap
+exec i3

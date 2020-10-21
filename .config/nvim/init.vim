@@ -6,6 +6,7 @@ syntax on
 filetype  plugin indent on
 
 " line numbers
+set relativenumber
 set number
 
 " tab creates an indent of 4 spaces
